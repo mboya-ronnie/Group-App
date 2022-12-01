@@ -38,4 +38,5 @@ def send(request):
 def getMessaages(request,room):
     room_details = ROOM.objectss.get(name=room)
 
-   
+    message = message.objects.filter(room =room_details.id)
+    return JsonResponse({"messages":list(message.value())})
