@@ -7,7 +7,7 @@ def home(request):
     return render(request, 'home.html')
 
 def room(request, room):
-    username = request.GET.get('username')
+    username = request.GET.get('user')
     room_details = ROOM.objects.get(name=room)
     return render(request, 'root.html',{
         'username':username,
@@ -38,5 +38,4 @@ def send(request):
 def getMessaages(request,room):
     room_details = ROOM.objectss.get(name=room)
 
-    message = message.objects.filter(room =room_details.id)
-    return JsonResponse({"messages":list(message.value())})
+   
