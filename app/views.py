@@ -4,10 +4,11 @@ from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    return render(request,'home.html')
 
-def room(request, room):
-    username = request.GET.get('user')
+    
+def room(request,room):
+    username = request.GET.get('username')
     room_details = ROOM.objects.get(name=room)
     return render(request, 'root.html',{
         'username':username,
@@ -15,8 +16,8 @@ def room(request, room):
         'room_details':room_details
     })
 
-def checkview(request,):
-    room = request.POST['room_name']
+def checkview(request):
+    room = request.POST[ 'room_name' ]
     username = request.POST[ 'username' ]
 
     if ROOM.objects.filter(name=room).exists():
@@ -29,14 +30,14 @@ def checkview(request,):
 def send(request):
         message = request.POST['message']
         username = request.POST['username']
-        room_id= request.POST['room_id']
+        room_id = request.POST['room_id']
 
-        new_message = message.objects.create(value=message, user=username,room=room_id)
+        new_message = message.objects.create(value=message, user=username, room=room_id)
         new_message.save()
         return HttpResponse('message sent sucessfully')
 
-def getMessaages(request,room):
-    room_details = ROOM.objectss.get(name=room)
+def getMessages(request,room):
+    room_details = ROOM.objects.get(name=room)
 
-    message = message.objects.filter(room =room_details.id)
+    Message = Message.objects.filter(room =room_details.id)
     return JsonResponse({"messages":list(message.value())})

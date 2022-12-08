@@ -56,14 +56,14 @@ body {
 </head>
 <body>
 
-<h2>{{room}}- DjChat</h2>
+<h2>{{room}}- RONNIE </h2>
 
 <div id="display">
 
-<!-- <div class="container darker">
+ <!-- <div class="container darker">
   <b>Tom</b><p>Hello Everyone, How Are You Guys Doing?</p>
   <span class="time-left">20th, April 2021</span>
-</div> -->
+</div>  -->
 
 </div>
 
@@ -72,7 +72,7 @@ $(document).ready(function(){
 
 setInterval(function(){
     $.ajax({
-        type: 'GET',
+        type: 'get',
         url : "/getMessages/{{room}}/",
         success: function(response){
             console.log(response);
